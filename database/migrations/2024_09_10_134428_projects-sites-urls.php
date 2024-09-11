@@ -28,13 +28,11 @@ return new class extends Migration
 
         Schema::create('urls', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('site_id');
-            $table->text('url');
+            $table->text('url')->unique();
             $table->integer('status_code')->nullable();
-            $table->text('html')->nullable();
+            $table->string('mime_type')->nullable();
+            $table->text('content')->nullable();
             $table->timestamps();
-
-            $table->unique(['site_id','url']);
         });
     }
 
